@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "status": "trial",
+      "kind": "repository",
+      "base_url": "https://api.github.com",
+      "allowed_domains": ["api.github.com"],
+      "network_mode": "system",
+      "proxy_url": "",
+      "max_items": 20
+    },
+    {
+      "id": "gitee",
+      "name": "Gitee",
+      "status": "trial",
+      "kind": "repository",
+      "base_url": "https://gitee.com/api/v5",
+      "allowed_domains": ["gitee.com"],
+      "network_mode": "direct",
+      "proxy_url": "",
+      "max_items": 20
+    },
+    {
+      "id": "tencent_market",
+      "name": "腾讯云认证作者案例专栏",
+      "status": "trial",
+      "kind": "market_case",
+      "base_url": "https://cloud.tencent.com",
+      "allowed_domains": ["cloud.tencent.com"],
+      "network_mode": "direct",
+      "proxy_url": "",
+      "max_items": 5
+    }
+  ]
+}

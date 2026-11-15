@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/
+logs/
+exports/
+config/settings.json
+.idea/
+*.log
+.coverage
+htmlcov/
+config/discovery/content_sources.local.json
+docs/superpowers/
+docs/可行性分析.md
+docs/项目技术说明.md
+

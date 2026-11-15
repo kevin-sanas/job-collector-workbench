@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/modood/Administrative-divisions-of-China",
+  "commit": "c49d495b40ac73eb1a66f6eeae5f8fd10696f035",
+  "path": "dist/pc-code.json",
+  "snapshot_date": "2023-06-30",
+  "retrieved_at": "2026-10-20",
+  "upstream_sha256": "809d72fa8f1eca68a6843618ab95a6819f6f42a37ee2d97c573fc5c26d9ad9bd",
+  "license": "WTFPL-2.0",
+  "scope": "内地31个省级地区，保留自治州、地区、盟及省直辖县级单位；未包含港澳台。",
+  "transform": "将北京、天津、上海、重庆的区县层合并为单个同名城市（内部代码为省级代码+00）；其他条目不变。代码仅用于本地联动，不能当作网站搜索编码。"
+}

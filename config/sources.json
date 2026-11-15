@@ -1,0 +1,91 @@
+[
+  {
+    "id": "boss", "name": "BOSS 直聘", "home": "https://www.zhipin.com/",
+    "domains": ["zhipin.com"], "status": "trial", "note": "2026-10-19 已验证登录后 3 条列表及详情、1 条 Python/北京搜索结果；仅采集已加载列表，不自动翻页；无公开公司名称的卡片暂不入库",
+    "font_selector": ".job-salary, .salary",
+    "protocol_url": "https://www.zhipin.com/web/common/protocol/protocol-2019-09-30.html",
+    "protocol_version": "标题 2019-09-30 / 正文 2019-07-30，需复核现行版本",
+    "search_url": "https://www.zhipin.com/web/geek/jobs?query={keyword}&city={city}",
+    "cities": {"全国":"100010000","北京":"101010100","上海":"101020100","广州":"101280100","深圳":"101280600","杭州":"101210100","成都":"101270100","武汉":"101200100","南京":"101190100","苏州":"101190400","西安":"101110100","重庆":"101040100","天津":"101030100","郑州":"101180100","长沙":"101250100","合肥":"101220100"},
+    "selectors": {"card":".job-card-box", "title":"a.job-name", "company":"a[href*='/gongsi/'] .boss-name", "salary":".job-salary", "city":".company-location", "link":"a.job-name", "tags":".tag-list li", "description":".job-sec-text"},
+    "job_id_pattern":"/job_detail/([^/?]+?)(?:\\.html)?$",
+    "detail_selector":".job-sec-text", "detail_work_address_selector":".location-address", "popup_close":""
+  },
+  {
+    "id":"51job", "name":"51job / 前程无忧", "home":"https://we.51job.com/pc/search",
+    "domains":["51job.com"], "status":"trial", "adapter":"51job",
+    "note":"2026-10-19 已现场采集 3 条 Python/北京岗位及详情，重复采集为 0 新增、3 更新；按控件选择单一城市，至少间隔 5 秒；必须打开详情取得岗位链接和 ID；不自动翻页",
+    "protocol_url":"https://login.51job.com/xyservice.php?display=h5&page=1",
+    "protocol_version":"该官方页面标注 2021-09-23，2026-10-19 复核；现行入口 https://we.51job.com/service?type=1 仍需人工核对",
+    "search_mode":"controls", "search_entry":"https://we.51job.com/pc/search", "requires_details":true, "min_interval_seconds":5,
+    "cities":{"北京":"010000","上海":"020000","广州":"030200","深圳":"040000","武汉":"180200","西安":"200200","杭州":"080200","南京":"070200","成都":"090200","重庆":"060000","东莞":"030800","大连":"230300","沈阳":"230200","苏州":"070300","昆明":"250200","长沙":"190200","合肥":"150200","宁波":"080300","郑州":"170200","天津":"050000","青岛":"120300","济南":"120200","哈尔滨":"220200","长春":"240200","福州":"110200"},
+    "selectors":{"card":".joblist-item","title":".jname","company":".cname","salary":".sal","city":".area .shrink-0"},
+    "detail_selector":".job-detail .job_msg",
+    "login_selector":".login-dialog, .login-card, .login-register-modal, .login-container input[type='password']",
+    "verification_selector":"iframe[src*='captcha'], iframe[src*='verify'], .geetest_panel, .nc-container, #captcha, .verify-wrap, #aliyunCaptcha-window"
+  },
+  {
+    "id":"zhaopin","name":"智联招聘","home":"https://www.zhaopin.com/","domains":["zhaopin.com","zhaopin.cn"],
+    "status":"trial","adapter":"zhaopin","note":"2026-10-19 登录后现场采集 2 条北京岗位及详情，Python/北京搜索重复岗位正常更新；逐条选择右侧详情取得 ID；搜索已确认北京、长沙编码，不自动翻页",
+    "protocol_url":"https://rd6.zhaopin.com/aboutus/legal/service?fromClient=CH5",
+    "protocol_version":"2026-07-02 更新 / 2026-07-15 生效；2026-10-19 官网入口复核",
+    "search_mode":"controls","search_entry":"https://www.zhaopin.com/","requires_details":true,"min_interval_seconds":5,
+    "cities":{"北京":"530","长沙":"749"},
+    "selectors":{"card":".job-card","title":".vue-clamp__text","company":".job-card__company-name","salary":".job-card__salary","city":".job-card__location"},
+    "login_selector":".job-list-login-gate, .zppp-input[type='tel']",
+    "detail_selector":".job-description__content"
+  },
+  {
+    "id":"liepin","name":"猎聘","home":"https://www.liepin.com/","domains":["liepin.com"],"status":"trial",
+    "note":"2026-10-19 现场采集 2 条 Python/北京公开岗位及详情，重复岗位正常更新；城市编码来自页面筛选项；仅读取已加载列表，不自动翻页；公开匿名企业标签按原文保留",
+    "protocol_url":"https://wow.liepin.com/t1008237/index.html?agreementType=A0001",
+    "protocol_version":"2024-07-25 更新 / 2024-08-01 生效；2026-10-19 官网入口复核",
+    "search_url":"https://www.liepin.com/zhaopin/?dq={city}&key={keyword}","min_interval_seconds":5,
+    "cities":{"全国":"410","北京":"010","上海":"020","天津":"030","重庆":"040","广州":"050020","深圳":"050090","苏州":"060080","南京":"060020","杭州":"070020","大连":"210040","成都":"280020","武汉":"170020","西安":"270020"},
+    "job_id_pattern":"/(?:job|a)/(\\d+)\\.shtml$","canonical_job_path":true,"location_separator":"[-·\\s]+",
+    "selectors":{"card":".jobCardPcContainer","title":".jobTitleBox > div.ellipsis-1","company":".jobCompanyInfoBox .companyName","salary":".jobDetailBox > a > div:first-child > span:last-of-type","city":".jobTitleBox span.ellipsis-1","link":".jobDetailBox > a","tags":".jobDetailBox > a > div:nth-child(2)"},
+    "detail_title_selector":".job-title","detail_selector":".job-intro-container .paragraph:first-child dd","detail_work_address_label":"职位地址"
+  },
+  {
+    "id":"chinahr","name":"中华英才网 / 新华英才","home":"https://www.chinahr.com/","domains":["chinahr.com"],"status":"trial","adapter":"chinahr",
+    "note":"2026-10-19 现场采集 2 条 Python/北京公开岗位及详情；官网当前品牌显示新华英才；通过可见城市与关键词控件搜索，仅读取已加载列表，不自动翻页",
+    "protocol_url":"https://www.chinahr.com/agreement/register","protocol_version":"2024-03-12 更新 / 2024-03-19 生效；2026-10-19 官网入口复核，替代旧 2019 入口",
+    "search_mode":"controls","search_entry":"https://www.chinahr.com/job","min_interval_seconds":5,
+    "cities":{"全国":"全国","北京":"北京","上海":"上海","广州":"广州","深圳":"深圳","杭州":"杭州","成都":"成都","南京":"南京","武汉":"武汉","西安":"西安","厦门":"厦门","长沙":"长沙","苏州":"苏州","天津":"天津","重庆":"重庆","郑州":"郑州","青岛":"青岛","合肥":"合肥","福州":"福州"},
+    "job_id_pattern":"/detail/([a-fA-F0-9]{24})$","canonical_job_path":true,"location_separator":"-",
+    "selectors":{"card":".detail-card","title":".detail-card_left-title-name","company":".detail-card_right-compony .name","salary":".detail-card_left-salary","city":".detail-card_left-info > span:nth-last-of-type(2)","experience":".detail-card_left-info > span:nth-last-of-type(3)","tags":".detail-card_left-info","link":"a.detail-card_left","employment_type":".detail-card_left-title-tag"},
+    "detail_title_selector":".detail-top_left-title-name","detail_company_selector":".detail-com_info_name_text","detail_selector":".detail-des_lists","detail_work_address_selector":".detail-work_address .workplace_name"
+  },
+  {
+    "id":"jobcn","name":"卓博人才网","home":"https://www.jobcn.com/","domains":["jobcn.com"],"status":"trial","adapter":"public_fields",
+    "note":"2026-10-20 现场采集 2 条 Python/全国全文匹配岗位及详情，重复为 0 新增、2 更新；仅已加载列表，不翻页；其他地区请人工筛选后采集当前页",
+    "search_url":"https://www.jobcn.com/search/result.xhtml?p.keyword={keyword}&p.keywordType=2&p.workLocation={city}&p.sortBy=default",
+    "cities":{"全国":""},"min_interval_seconds":5,"list_format":"jobcn",
+    "job_path_pattern":"/position/detail\\.xhtml","job_id_query":"posId","job_query_keys":["redirect","posId","comId"],
+    "selectors":{"card":".job_view_box","title":".job_view_info_posName>a[href]","company":".job_view_info_comName>a","salary":".job_view_attr_salary","requirements":".job_view_info_base","link":".job_view_info_posName>a[href]"},
+    "detail_title_selector":".name_pos h2.name>span:first-child, .pos_primary .pos_base > .pos_name","detail_company_selector":".base h2, .pos_primary .pos_info > span:first-child > a[href]","detail_selector":".desc_pos_body, .pos_detail_desc > p.text","detail_location_selector":".name_pos .attributes, .pos_primary .pos_info > span:nth-last-child(2)",
+    "protocol_url":"https://www.jobcn.com/about/v2/per.jsp","protocol_version":"2026-10-20 已读取官网个人用户服务协议正文，版本日期尚未确认"
+  },
+  {
+    "id":"job168","name":"南方人才网","home":"https://www.job168.com/","domains":["job168.com"],"status":"trial","adapter":"job168",
+    "note":"2026-10-20 从首页查看更多进入全国招聘页，工程师/广州采集2条及详情，重复0新增2更新；Python/全国当前无条目，正常结束；已核对广东21市及四直辖市选项，现场搜索仅广州；自动搜索不限行业/职位类别、网站默认一个月内；行业等其他条件请人工筛选后采集当前页；仅已加载列表，不翻页",
+    "search_mode":"controls","search_entry":"https://www.job168.com/person/search_result.jsp","min_interval_seconds":5,"detail_fields_required":true,
+    "cities":{"全国":"","广州":"010100","佛山":"010500","深圳":"010200","珠海":"010300","东莞":"010400","中山":"010600","惠州":"010700","肇庆":"010800","汕头":"010900","汕尾":"011000","潮州":"011100","江门":"011200","茂名":"011300","韶关":"011400","阳江":"011500","湛江":"011600","河源":"011700","梅州":"011800","清远":"011900","揭阳":"012000","云浮":"012300","北京":"020000","上海":"030000","重庆":"040000","天津":"050000"},
+    "district_cities":{"越秀区":"广州","荔湾区":"广州","海珠区":"广州","天河区":"广州","白云区":"广州","黄埔区":"广州","番禺区":"广州","花都区":"广州","南沙区":"广州","禅城区":"佛山","南海区":"佛山","顺德区":"佛山","高明区":"佛山","三水区":"佛山"},
+    "job_id_pattern":"/person/detail_(\\d+)\\.html",
+    "selectors":{"card":".sjoblist .sjob","title":".jn a","company":".cn a","salary":".job_search_xz","education":".col_1 .sn .tl","experience":".col_1 .sn .ts:first-of-type","published":".update","link":".jn a"},
+    "detail_title_selector":".jtop .cthum b","detail_company_selector":".jtop a.coma","detail_selector":".jhc_1 > .jmcont",
+    "protocol_version":"2026-10-20 已核对官网全国招聘入口；适用协议入口及版本日期待核实，不代表平台授权"
+  },
+  {
+    "id":"ncss","name":"国家大学生就业服务平台","home":"https://www.ncss.cn/student/jobs/index.html","domains":["ncss.cn"],"status":"trial","adapter":"public_fields",
+    "note":"2026-10-20 现场采集 2 条 Python/全国岗位及详情，重复为 0 新增、2 更新；列表仅省份，必须读取详情确定地点，未明确城市则留空、保留地点原文；仅已加载列表，不翻页；其他地区可人工筛选后采集当前页",
+    "search_mode":"controls","search_kind":"ncss","search_entry":"https://www.ncss.cn/student/jobs/index.html",
+    "cities":{"全国":""},"min_interval_seconds":5,"list_format":"ncss","detail_fields_required":true,
+    "job_id_pattern":"/student/jobs/([A-Za-z0-9]+)/detail\\.html",
+    "selectors":{"card":"#jobLIST .jobList","title":".first-ul h5 a","company":".company-name","salary":".salary-money","education":".first-ul>li:first-of-type","region":".first-ul>li:last-child","link":".first-ul h5 a"},
+    "detail_title_selector":"#jobName","detail_company_selector":"#realCorpName","detail_selector":".jobdetail-box .mainContent",
+    "detail_fields":{"location":"ul.address","company_address":"#companyNameMap","salary":".job .salary>li:first-child","education":".job .salary>li:nth-child(3)","employment_type":".job .work:first-child>li:nth-child(2)","published_raw":".job .salary>li:last-child"},
+    "protocol_version":"2026-10-20 已核对公开岗位入口，适用协议入口及版本日期待核实，非平台授权记录"
+  }
+]
